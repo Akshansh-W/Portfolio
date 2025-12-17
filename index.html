@@ -3,10 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-particles" id="loading-particles"></div>
+        <div class="loading-sharingan">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <radialGradient id="sharinganGlow">
+                        <stop offset="0%" style="stop-color:#ff3b3b;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#c41e3a;stop-opacity:1" />
+                    </radialGradient>
+                </defs>
+                <!-- Outer circle -->
+                <circle cx="100" cy="100" r="90" fill="none" stroke="url(#sharinganGlow)" stroke-width="3"/>
+                <circle cx="100" cy="100" r="75" fill="none" stroke="#ff3b3b" stroke-width="2"/>
+                <circle cx="100" cy="100" r="60" fill="none" stroke="#ff3b3b" stroke-width="2"/>
+                <circle cx="100" cy="100" r="45" fill="none" stroke="#ff3b3b" stroke-width="2"/>
+                <circle cx="100" cy="100" r="30" fill="none" stroke="#ff3b3b" stroke-width="2"/>
+                <!-- Center -->
+                <circle cx="100" cy="100" r="20" fill="#ff3b3b"/>
+                <!-- Tomoe (comma shapes) -->
+                <path d="M 100 100 L 100 30" stroke="#ff3b3b" stroke-width="4"/>
+                <path d="M 100 100 L 161.6 137.5" stroke="#ff3b3b" stroke-width="4"/>
+                <path d="M 100 100 L 38.4 137.5" stroke="#ff3b3b" stroke-width="4"/>
+                <!-- Tomoe dots -->
+                <circle cx="100" cy="30" r="10" fill="#ff3b3b"/>
+                <circle cx="161.6" cy="137.5" r="10" fill="#ff3b3b"/>
+                <circle cx="38.4" cy="137.5" r="10" fill="#ff3b3b"/>
+            </svg>
+        </div>
+    </div>
+
     <div class="scroll-progress" id="scroll-progress"></div>
     <div id="canvas-container"></div>
 
@@ -14,7 +45,12 @@
         <!-- Navigation -->
         <nav>
             <div class="logo">PORTFOLIO</div>
-            <ul class="nav-links">
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -28,7 +64,7 @@
             <div class="hero-content">
                 <div class="hero-title">
                     <h1>Hello, I'm <span style="color: #ff3b3b;">Akshansh</span></h1>
-                    <h2 id="animated-title">Full Stack Developement</h2>
+                    <h2 id="animated-title">Backend Development</h2>
                 </div>
                 <p>
                     Passionate developer crafting exceptional digital experiences. 

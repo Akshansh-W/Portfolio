@@ -1,4 +1,38 @@
-// Three.js Scene Setup
+ // Loading Screen Animation
+        window.addEventListener('load', () => {
+            // Create particles - more for dramatic spread
+            const particlesContainer = document.getElementById('loading-particles');
+            for (let i = 0; i < 80; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'loading-particle';
+                
+                const angle = (i / 80) * Math.PI * 2;
+                const distance = 200 + Math.random() * 400;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+                
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+                particle.style.left = '50%';
+                particle.style.top = '50%';
+                particle.style.animationDelay = (i * 0.015) + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+
+            // Hide loading screen after 1 seconds (to match animation duration)
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.classList.add('hidden');
+                
+                // Remove from DOM after transition
+                setTimeout(() => {
+                    loadingScreen.remove();
+                }, 400);
+            }, 2390);
+        });
+
+        // Three.js Scene Setup
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -353,13 +387,38 @@
                         block: 'start'
                     });
                 }
+                
+                // Close mobile menu after clicking a link
+                const navLinks = document.getElementById('nav-links');
+                const hamburger = document.getElementById('hamburger');
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
             });
+        });
+
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
         });
 
         // Typing animation for title
         const titles = [
-            'Backend Developement',
             'Machine Learning',
+            'Software Developement'
         ];
         let currentTitleIndex = 0;
         let charIndex = 0;

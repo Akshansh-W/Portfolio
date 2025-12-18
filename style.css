@@ -1,4 +1,4 @@
- * {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -50,7 +50,7 @@
             width: 200px;
             height: 200px;
             position: relative;
-            animation: zoomInSharingan 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+            animation: zoomInSharingan 1.7s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
             opacity: 0;
         }
 
@@ -73,23 +73,20 @@
         @keyframes zoomInSharingan {
             0% {
                 opacity: 0;
-                transform: scale(0.1);
-            }
-            20% {
-                opacity: 1;
-                transform: scale(0.4);
-            }
-            40% {
                 transform: scale(0.8);
             }
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            /* Stay at normal size while rotating */
             60% {
-                transform: scale(1.5);
+                transform: scale(1);
+                opacity: 1;
             }
-            80% {
-                transform: scale(3);
-            }
+            /* Quick zoom in last 0.5s */
             100% {
-                transform: scale(8);
+                transform: scale(10);
                 opacity: 1;
             }
         }
@@ -127,7 +124,7 @@
             height: 8px;
             background: #ff3b3b;
             border-radius: 50%;
-            animation: explosionSpread 2.5s ease-out forwards;
+            animation: explosionSpread 1.7s ease-out forwards;
             box-shadow: 0 0 20px rgba(255, 59, 59, 1), 0 0 40px rgba(255, 59, 59, 0.8);
             opacity: 0;
         }
@@ -137,24 +134,20 @@
                 transform: translate(0, 0) scale(0);
                 opacity: 0;
             }
-            20% {
-                opacity: 1;
-                transform: translate(calc(var(--tx) * 0.2), calc(var(--ty) * 0.2)) scale(0.5);
-            }
-            40% {
-                opacity: 1;
-                transform: translate(calc(var(--tx) * 0.5), calc(var(--ty) * 0.5)) scale(1);
-            }
             60% {
-                opacity: 1;
-                transform: translate(calc(var(--tx) * 0.8), calc(var(--ty) * 0.8)) scale(1.2);
+                opacity: 0;
+                transform: translate(0, 0) scale(0);
             }
-            80% {
-                opacity: 0.8;
-                transform: translate(var(--tx), var(--ty)) scale(1);
+            70% {
+                opacity: 1;
+                transform: translate(calc(var(--tx) * 0.3), calc(var(--ty) * 0.3)) scale(1);
+            }
+            85% {
+                opacity: 1;
+                transform: translate(calc(var(--tx) * 0.7), calc(var(--ty) * 0.7)) scale(1.2);
             }
             100% {
-                transform: translate(calc(var(--tx) * 1.2), calc(var(--ty) * 1.2)) scale(0.3);
+                transform: translate(var(--tx), var(--ty)) scale(0.5);
                 opacity: 0;
             }
         }
@@ -169,24 +162,22 @@
             height: 100%;
             z-index: 0;
             opacity: 0;
-            animation: fadeInContent 1s ease-out 2.5s forwards;
+            animation: fadeInContent 0.8s ease-out 1.7s forwards;
         }
 
         .content {
             position: relative;
             z-index: 1;
             opacity: 0;
-            animation: fadeInContent 1s ease-out 2.5s forwards;
+            animation: fadeInContent 0.8s ease-out 1.7s forwards;
         }
 
         @keyframes fadeInContent {
             0% {
                 opacity: 0;
-                transform: translateY(20px);
             }
             100% {
                 opacity: 1;
-                transform: translateY(0);
             }
         }
 
@@ -732,10 +723,10 @@
 
             .nav-links {
                 position: fixed;
-                top: 65px;
+                top: 70px;
                 right: -100%;
                 width: 70%;
-                height: calc(100vh - 65px);
+                height: calc(100vh - 70px);
                 background: rgba(10, 10, 10, 0.98);
                 backdrop-filter: blur(20px);
                 flex-direction: column;
@@ -745,6 +736,7 @@
                 transition: right 0.4s ease;
                 border-left: 1px solid rgba(255, 59, 59, 0.2);
                 z-index: 99;
+                overflow-y: auto;
             }
 
             .nav-links.active {
@@ -858,8 +850,8 @@
 
             .nav-links {
                 width: 80%;
-                top: 57px;
-                height: calc(100vh - 57px);
+                top: 60px;
+                height: calc(100vh - 60px);
             }
 
             .about, .skills, .projects, .contact {

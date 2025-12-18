@@ -1,4 +1,4 @@
- // Loading Screen Animation
+// Loading Screen Animation
         window.addEventListener('load', () => {
             // Create particles - more for dramatic spread
             const particlesContainer = document.getElementById('loading-particles');
@@ -20,7 +20,7 @@
                 particlesContainer.appendChild(particle);
             }
 
-            // Hide loading screen after 1 seconds (to match animation duration)
+            // Hide loading screen after 1.7 seconds
             setTimeout(() => {
                 const loadingScreen = document.getElementById('loading-screen');
                 loadingScreen.classList.add('hidden');
@@ -28,8 +28,8 @@
                 // Remove from DOM after transition
                 setTimeout(() => {
                     loadingScreen.remove();
-                }, 400);
-            }, 2390);
+                }, 800);
+            }, 1700);
         });
 
         // Three.js Scene Setup
@@ -244,7 +244,7 @@
 
         // Create multiple leaves
         const leaves = [];
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 35; i++) {
             const leaf = createLeaf();
             const size = 0.3 + Math.random() * 0.4;
             leaf.scale.set(size, size, size);
@@ -417,8 +417,9 @@
 
         // Typing animation for title
         const titles = [
-            'Machine Learning',
-            'Software Developement'
+            'Backend Developer',
+            'Machine Learning Engineer',
+            'Generative AI Specialist'
         ];
         let currentTitleIndex = 0;
         let charIndex = 0;

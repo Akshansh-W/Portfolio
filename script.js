@@ -410,16 +410,18 @@
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
             }
         });
 
         // Typing animation for title
         const titles = [
-            'Backend Developer',
-            'Machine Learning Engineer',
-            'Generative AI Specialist'
+            'Backend Development',
+            'Machine Learning',
+            'Generative AI'
         ];
         let currentTitleIndex = 0;
         let charIndex = 0;

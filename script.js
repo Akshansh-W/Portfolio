@@ -419,9 +419,8 @@
 
         // Typing animation for title
         const titles = [
-            'Backend Development',
-            'Machine Learning',
-            'Generative AI'
+            'Full Stack Development',
+            'Machine Learning'
         ];
         let currentTitleIndex = 0;
         let charIndex = 0;
